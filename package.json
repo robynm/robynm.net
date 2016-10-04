@@ -1,0 +1,12 @@
+{
+  "name": "robynm",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "css": "node-sass ./stylesheets/style.scss > ./stylesheets/style.css",
+    "css:watch": "npm run css -- -w"
+  },
+"devDependencies": {
+    "node-sass": "^3.4.2"
+  }
+}
