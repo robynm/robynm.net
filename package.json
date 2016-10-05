@@ -3,10 +3,13 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "css": "node-sass ./stylesheets/style.scss > ./stylesheets/style.css",
+    "css": "node-sass ./stylesheets/style.scss ./stylesheets/style.css postcss -u autoprefixer -r ./stylesheets/style.css",
     "css:watch": "npm run css -- -w"
   },
-"devDependencies": {
-    "node-sass": "^3.4.2"
+  "devDependencies": {
+    "autoprefixer": "^6.5.0",
+    "node-sass": "^3.4.2",
+    "postcss": "^5.2.4",
+    "postcss-cli": "^2.6.0"
   }
 }

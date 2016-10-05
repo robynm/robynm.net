@@ -6,6 +6,7 @@ $color-gray: #DDDDDD;
 $color-border-light: #D5D5D5;
 $color-border-mid: #CCCCCC;
 $font-sans: "Lucida Grande", Helvetica, Arial, sans-serif;
+$break-mobile: 600px;
 
 // global
 a { color: $color-blue; }
@@ -184,7 +185,12 @@ li { list-style: none; }
 .pv5 { @extend .pt5; @extend .pb5; }
 
 .flex-container {
-  @extend .df, .flw;
+  @extend .df;
+  flex-direction: column;
+
+  @media (min-width: $break-mobile) {
+    flex-direction: row;
+  }
 }
 
 .container {
@@ -206,11 +212,17 @@ li { list-style: none; }
 
   a {
     text-decoration: none;
-    color: transparent;
+    color: white;
     @extend .db;
     width: 100%;
     height: 100%;
     transition: .2s all ease;
+    background-color: rgba(0,0,0,.5);
+
+    @media (min-width: $break-mobile) {
+      color: transparent;
+      background-color: transparent;
+    }
   }
 
   a:hover, a:focus, a:active {
