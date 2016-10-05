@@ -3,8 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "css": "node-sass ./stylesheets/style.scss ./stylesheets/style.css postcss -u autoprefixer -r ./stylesheets/style.css",
-    "css:watch": "npm run css -- -w"
+    "sass": "node-sass ./stylesheets/style.scss ./stylesheets/style.css",
+    "prefix": "postcss -u autoprefixer -r ./stylesheets/style.css",
+    "css": "npm run sass && npm run prefix",
+    "css:watch": "npm run sass && npm run prefix -- -w"
   },
   "devDependencies": {
     "autoprefixer": "^6.5.0",
