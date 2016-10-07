@@ -16,3 +16,6 @@ Desktop.ini
 node_modules
 *.log
 *.gz
+
+# Jekyll
+_site/
