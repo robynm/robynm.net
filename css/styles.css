@@ -7,6 +7,10 @@ a:hover {
 li {
   list-style: none; }
 
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
 .mw1 {
   max-width: 12rem; }
 
@@ -19,7 +23,7 @@ li {
 .dn {
   display: none; }
 
-.db, .thumbnail a {
+.db, .block-link {
   display: block; }
 
 .di {
@@ -28,7 +32,7 @@ li {
 .df, .flex-container {
   display: flex; }
 
-.dib {
+.dib, .image-div {
   display: inline-block; }
 
 .flw {
@@ -52,6 +56,9 @@ li {
 
 .sans {
   font-family: "Lucida Grande", Helvetica, Arial, sans-serif; }
+
+.hide {
+  display: none; }
 
 .f1 {
   font-size: 2rem; }
@@ -151,7 +158,7 @@ li {
 .ml0, .mh0 {
   margin-left: 0; }
 
-.ml1, .mh1 {
+.ml1, .mh1, .image-div {
   margin-left: .25rem; }
 
 .ml2, .mh2 {
@@ -205,7 +212,7 @@ li {
 .mb0, .mv0 {
   margin-bottom: 0; }
 
-.mb1, .mv1 {
+.mb1, .mv1, .image-div {
   margin-bottom: .25rem; }
 
 .mb2, .mv2 {
@@ -324,24 +331,58 @@ li {
 .thumbnail {
   background: #DDDDDD center center no-repeat;
   width: 212px;
-  height: 230px; }
-  .thumbnail a {
-    text-decoration: none;
-    color: white;
-    width: 100%;
-    height: 100%;
-    transition: .2s all ease;
-    background-color: rgba(0, 0, 0, 0.5); }
-    @media (min-width: 600px) {
-      .thumbnail a {
-        color: transparent;
-        background-color: transparent; } }
-  .thumbnail a:hover, .thumbnail a:focus, .thumbnail a:active {
-    color: white;
-    background-color: rgba(0, 0, 0, 0.5); }
+  height: 230px;
+  position: relative; }
 
 .image-div {
+  position: relative;
   width: 300px;
   flex: auto; }
   .image-div img {
     width: 100%; }
+
+.block-link {
+  position: absolute;
+  text-decoration: none;
+  color: white;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  transition: .2s all ease;
+  background-color: rgba(0, 0, 0, 0.5); }
+  @media (min-width: 600px) {
+    .block-link {
+      color: transparent;
+      background-color: transparent; } }
+
+.block-link:hover, .block-link:focus, .block-link:active {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5); }
+
+.flex-end {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; }
+
+.gallery-container {
+  display: none; }
+  .gallery-container.open {
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+  .gallery-container .close {
+    position: absolute;
+    top: 10px;
+    right: 10px; }

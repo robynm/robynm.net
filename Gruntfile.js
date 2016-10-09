@@ -1,13 +1,33 @@
 module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
+        browserify: {
+            options: {
+                transform: [["babelify", {"presets": ["es2015"]}]]
+            },
+            build: {
+                files: {
+                    'js/bundle.js': 'js/app.js'
+                }
+            }
+        },
+        uglify: {
+            build: {
+                options: {
+                    mangle: false
+                },
+                files: {
+                    'js/bundle.min.js': 'js/bundle.js'
+                }
+            }
+        },
         sass: {
             options: {
                 style: "compressed",
             },
             build: {
-                src: "stylesheets/style.scss",
-                dest: "stylesheets/style.css"
+                src: "css/styles.scss",
+                dest: "css/styles.css"
             }
         },
         postcss: {
@@ -18,8 +38,8 @@ module.exports = function(grunt) {
                 ]
             },
             build: {
-                src: "stylesheets/style.css",
-                dest: "stylesheets/style.min.css"
+                src: "css/styles.css",
+                dest: "css/styles.min.css"
             }
         },
         watch: {
@@ -28,10 +48,12 @@ module.exports = function(grunt) {
             },
             build: {
                 files: [
-                    'js/*.js',
-                    'stylesheets/*.scss'
+                    'js/app.js',
+                    'css/styles.scss'
                 ],
                 tasks: [
+                    'browserify:build',
+                    'uglify:build',
                     'sass:build',
                     'postcss:build'
                 ]
@@ -39,10 +61,12 @@ module.exports = function(grunt) {
         }
     });
 
+    grunt.loadNpmTasks('grunt-browserify');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-sass');
     grunt.loadNpmTasks('grunt-postcss');
     grunt.loadNpmTasks('grunt-contrib-watch');
 
-    grunt.registerTask('develop', ['sass', 'postcss', 'watch']);
-    grunt.registerTask('default', ['sass', 'postcss']);
+    grunt.registerTask('develop', ['browserify', 'uglify', 'sass', 'postcss', 'watch']);
+    grunt.registerTask('default', ['browserify', 'uglify', 'sass', 'postcss']);
 }

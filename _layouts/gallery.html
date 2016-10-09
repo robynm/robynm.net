@@ -1,0 +1,26 @@
+<html lang="en-US">
+{% include head.html %}
+<body class="pa4 sans f6 lh2">
+  <div class="container">
+    {% include header.html %}
+    <main>  
+      <div class="content df flw">
+        {% for img in site.data.gallery %}
+          <div class="image-div">
+            <img src="{{img.src}}" alt="{{img.title}}">
+            <a class="block-link flex-end gallery-open" href="#"><span class="pa1">{{img.title}}</span></a>
+          </div>
+          {% assign i = forloop.index | modulo:5 %}
+          {% if i == 0 %}
+        </div>
+        <div class="content df flw">
+          {% endif %}
+        {% endfor %}
+      </div>
+    </main>
+    <div class="gallery-container"><a href="#" class="close">close</a> </div>
+    {% include footer.html %}
+  </div>
+  <script type="text/javascript" src="js/bundle.min.js"></script>
+</body>
+</html>
