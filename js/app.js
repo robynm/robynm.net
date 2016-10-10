@@ -7,27 +7,35 @@
     var content = document.querySelector('main');
     var image = e.target.parentElement.querySelector('img');
 
-    // add placeholder where image was moved
-    e.target.parentElement.classList.add('in-gallery');
-
-    container.appendChild(image);
+    container.querySelector('img').src = image.src;
+    container.querySelector('.caption').innerHTML = image.alt;
 
     content.classList.add('hide');
     container.classList.add('open');
   };
 
   var closeGallery = function(e) {
-    e.preventDefault();
+    if (e) {
+      e.preventDefault();
+    }
 
     var content = document.querySelector('main');
     var container = document.querySelector('.gallery-container');
     var image = document.querySelector('.gallery-container img');
-    var parent = document.querySelector('.in-gallery');
 
-    parent.appendChild(image);
-    parent.classList.remove('in-gallery');
+    container.querySelector('img').src = "";
+    container.querySelector('.caption').innerHTML = "";
+    
     container.classList.remove('open');
     content.classList.remove('hide');
+  };
+
+  var handleKeyUp = function(e) {
+
+    // esc in gallery closes gallery
+    if ( e.key === "Escape" && document.querySelector('.gallery-container').classList.contains("open") ) {
+      closeGallery();
+    }
   };
 
   var images = document.querySelectorAll('.gallery-open');
@@ -36,5 +44,6 @@
   });
 
   document.querySelector('.close').addEventListener('click', closeGallery);
+  window.addEventListener('keyup', handleKeyUp);
 
 }());

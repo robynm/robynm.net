@@ -6,6 +6,7 @@ $color-gray: #DDDDDD;
 $color-border-light: #D5D5D5;
 $color-border-mid: #CCCCCC;
 $font-sans: "Lucida Grande", Helvetica, Arial, sans-serif;
+$font-serif: Georgia, Times, "Times New Roman", serif;
 $break-mobile: 600px;
 
 // global
@@ -15,6 +16,7 @@ li { list-style: none; }
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: 16px;
 }
 
 // width
@@ -39,7 +41,7 @@ body {
 .b { font-weight: bold; }
 
 .sans { font-family: $font-sans; }
-
+.serif { font-family: $font-serif; }
 .hide { display: none; }
 
 .f1 { font-size: 2rem; }
