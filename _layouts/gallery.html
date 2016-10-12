@@ -6,7 +6,7 @@
     <main>  
       <div class="content df flw">
         {% for img in site.data.gallery %}
-          <div class="image-div">
+          <div class="image-div" data-order="{{forloop.index0}}">
             <img src="{{img.src}}" alt="{{img.title}}">
             <a class="block-link flex-end gallery-open" href="#"><span class="pa2 serif">{{img.title}}</span></a>
           </div>

@@ -1,2 +1,4 @@
 name: Robyn Meshulam
 markdown: kramdown
+
+permalinks: pretty

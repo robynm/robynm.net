@@ -7,7 +7,7 @@ module.exports = function(grunt) {
             },
             build: {
                 files: {
-                    'js/bundle.js': 'js/app.js'
+                    'js/bundle.js': 'js/source/app.js'
                 }
             }
         },
@@ -48,7 +48,7 @@ module.exports = function(grunt) {
             },
             build: {
                 files: [
-                    'js/app.js',
+                    'js/source/**/*.js',
                     'css/styles.scss'
                 ],
                 tasks: [
