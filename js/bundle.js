@@ -101,9 +101,10 @@ module.exports = function (_AppBase) {
         e.preventDefault();
       }
 
-      this.currentIndex++;
-
-      this.displayImageInGallery(this.currentIndex);
+      if (this.currentIndex < this.imageCollection.length - 1) {
+        this.currentIndex++;
+        this.displayImageInGallery(this.currentIndex);
+      }
     }
   }, {
     key: 'prevImage',
@@ -112,9 +113,10 @@ module.exports = function (_AppBase) {
         e.preventDefault();
       }
 
-      this.currentIndex--;
-
-      this.displayImageInGallery(this.currentIndex);
+      if (this.currentIndex > 0) {
+        this.currentIndex--;
+        this.displayImageInGallery(this.currentIndex);
+      }
     }
   }, {
     key: 'handleKeyUp',
@@ -143,12 +145,10 @@ module.exports = function (_AppBase) {
       var currentImage;
       var gallery = this.el.querySelector(this.gallerySelector);
 
-      if (index >= 0 && index < images.length) {
-        currentImage = images[index].querySelector('img');
-        gallery.querySelector(this.displaySelector).src = currentImage.src;
-        gallery.querySelector(this.displaySelector).alt = currentImage.alt;
-        gallery.querySelector('.caption').innerHTML = currentImage.alt;
-      }
+      currentImage = images[index].querySelector('img');
+      gallery.querySelector(this.displaySelector).src = currentImage.src;
+      gallery.querySelector(this.displaySelector).alt = currentImage.alt;
+      gallery.querySelector('.caption').innerHTML = currentImage.alt;
     }
   }]);
 
