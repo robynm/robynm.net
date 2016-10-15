@@ -17,7 +17,9 @@ module.exports = function () {
     value: function listenTo(eventType, selector, listener) {
       var _this = this;
 
-      this.el.querySelectorAll(selector).forEach(function (elem) {
+      var elements = this.el.querySelectorAll(selector);
+
+      Array.prototype.forEach.call(elements, function (elem) {
         elem.addEventListener(eventType, listener.bind(_this));
       });
     }
@@ -121,18 +123,22 @@ module.exports = function (_AppBase) {
   }, {
     key: 'handleKeyUp',
     value: function handleKeyUp(e) {
+
       // in-gallery actions
       if (this.el.querySelector('.gallery-container').classList.contains("open")) {
-        switch (e.key) {
-          case "Escape":
+        switch (e.keyCode) {
+          case 27:
+            // Escape
             this.closeGallery();
             break;
 
-          case "ArrowLeft":
+          case 37:
+            // Left arrow
             this.prevImage();
             break;
 
-          case "ArrowRight":
+          case 39:
+            // Right arrow
             this.nextImage();
             break;
         }

@@ -5,7 +5,9 @@ module.exports = class View {
   }
 
   listenTo(eventType, selector, listener) {
-    this.el.querySelectorAll(selector).forEach( elem => {
+    var elements = this.el.querySelectorAll(selector);
+
+    Array.prototype.forEach.call(elements, elem => {
       elem.addEventListener(eventType, listener.bind(this));
     });
   }

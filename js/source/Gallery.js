@@ -72,18 +72,19 @@ module.exports = class Gallery extends AppBase {
   }
 
   handleKeyUp(e) {
+    
     // in-gallery actions
     if ( this.el.querySelector('.gallery-container').classList.contains("open") ) {
-      switch (e.key) {
-        case "Escape":
+      switch (e.keyCode) {
+        case 27: // Escape
           this.closeGallery();
           break;
 
-        case "ArrowLeft":
+        case 37: // Left arrow
           this.prevImage();
           break;
 
-        case "ArrowRight":
+        case 39: // Right arrow
           this.nextImage();
           break;
       }
