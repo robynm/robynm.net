@@ -49,7 +49,7 @@ module.exports = function(grunt) {
             build: {
                 files: [
                     'js/source/**/*.js',
-                    'css/styles.scss'
+                    'css/**/*.scss'
                 ],
                 tasks: [
                     'browserify:build',

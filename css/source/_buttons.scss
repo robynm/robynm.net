@@ -1,0 +1,16 @@
+.btn {
+  @extend .bg--light-gray;
+  @extend .ba;
+  @extend .b--light-gray;
+  @extend .br1;
+
+  &:hover {
+    @extend .bg--gray;
+    @extend .b--gray;
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 .25rem;
+  }
+}
