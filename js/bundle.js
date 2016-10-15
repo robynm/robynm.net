@@ -6,37 +6,10 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 module.exports = function () {
-  function Model() {
-    _classCallCheck(this, Model);
-  }
-
-  _createClass(Model, [{
-    key: "get",
-    value: function get(property) {
-      return this.property;
-    }
-  }, {
-    key: "set",
-    value: function set(property, value) {
-      this.property = value;
-    }
-  }]);
-
-  return Model;
-}();
-
-},{}],2:[function(require,module,exports){
-"use strict";
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-module.exports = function () {
-  function View(model) {
+  function View(el) {
     _classCallCheck(this, View);
 
-    this.model = model;
+    this.el = el;
   }
 
   _createClass(View, [{
@@ -44,8 +17,8 @@ module.exports = function () {
     value: function listenTo(eventType, selector, listener) {
       var _this = this;
 
-      document.querySelectorAll(selector).forEach(function (el) {
-        el.addEventListener(eventType, listener.bind(_this));
+      this.el.querySelectorAll(selector).forEach(function (elem) {
+        elem.addEventListener(eventType, listener.bind(_this));
       });
     }
   }]);
@@ -53,40 +26,7 @@ module.exports = function () {
   return View;
 }();
 
-},{}],3:[function(require,module,exports){
-'use strict';
-
-(function () {
-  var GalleryModel = require('./gallery/model.js');
-  var GalleryView = require('./gallery/view.js');
-
-  var galleryView = new GalleryView(new GalleryModel());
-})();
-
-},{"./gallery/model.js":4,"./gallery/view.js":5}],4:[function(require,module,exports){
-'use strict';
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Model = require('../Model.js');
-
-module.exports = function (_Model) {
-  _inherits(GalleryModel, _Model);
-
-  function GalleryModel() {
-    _classCallCheck(this, GalleryModel);
-
-    return _possibleConstructorReturn(this, (GalleryModel.__proto__ || Object.getPrototypeOf(GalleryModel)).apply(this, arguments));
-  }
-
-  return GalleryModel;
-}(Model);
-
-},{"../Model.js":1}],5:[function(require,module,exports){
+},{}],2:[function(require,module,exports){
 'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -97,21 +37,22 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var View = require('../View.js');
+var AppBase = require('./Base.js');
 
-module.exports = function (_View) {
-  _inherits(GalleryView, _View);
+module.exports = function (_AppBase) {
+  _inherits(Gallery, _AppBase);
 
-  function GalleryView(model) {
-    _classCallCheck(this, GalleryView);
+  function Gallery(el) {
+    _classCallCheck(this, Gallery);
 
     // defaults
-    var _this = _possibleConstructorReturn(this, (GalleryView.__proto__ || Object.getPrototypeOf(GalleryView)).call(this, model));
+    var _this = _possibleConstructorReturn(this, (Gallery.__proto__ || Object.getPrototypeOf(Gallery)).call(this, el));
 
     _this.imageSelector = '.gallery-open';
     _this.gallerySelector = '.gallery-container';
     _this.contentSelector = 'main';
-    _this.imageCollection = document.querySelectorAll('.image-div');
+    _this.displaySelector = '.modal-image';
+    _this.imageCollection = _this.el.querySelectorAll('.image-div');
     _this.currentIndex = 0;
 
     _this.listenTo("click", _this.imageSelector, _this.openGallery);
@@ -123,16 +64,14 @@ module.exports = function (_View) {
     return _this;
   }
 
-  _createClass(GalleryView, [{
+  _createClass(Gallery, [{
     key: 'openGallery',
     value: function openGallery(e) {
       e.preventDefault();
+      var container = this.el.querySelector(this.gallerySelector);
+      var content = this.el.querySelector(this.contentSelector);
 
       this.currentIndex = e.target.parentElement.getAttribute('data-order');
-
-      var container = document.querySelector(this.gallerySelector);
-      var content = document.querySelector(this.contentSelector);
-
       this.displayImageInGallery(this.currentIndex);
 
       content.classList.add('hide');
@@ -145,11 +84,11 @@ module.exports = function (_View) {
         e.preventDefault();
       }
 
-      var content = document.querySelector(this.contentSelector);
-      var container = document.querySelector(this.gallerySelector);
-      var image = document.querySelector(this.gallerySelector + ' img');
+      var content = this.el.querySelector(this.contentSelector);
+      var container = this.el.querySelector(this.gallerySelector);
+      var image = this.el.querySelector('.gallery-img');
 
-      container.querySelector('img').src = "";
+      container.querySelector(this.displaySelector).src = "";
       container.querySelector('.caption').innerHTML = "";
 
       container.classList.remove('open');
@@ -181,7 +120,7 @@ module.exports = function (_View) {
     key: 'handleKeyUp',
     value: function handleKeyUp(e) {
       // in-gallery actions
-      if (document.querySelector('.gallery-container').classList.contains("open")) {
+      if (this.el.querySelector('.gallery-container').classList.contains("open")) {
         switch (e.key) {
           case "Escape":
             this.closeGallery();
@@ -202,18 +141,27 @@ module.exports = function (_View) {
     value: function displayImageInGallery(index) {
       var images = this.imageCollection;
       var currentImage;
-      var gallery = document.querySelector(this.gallerySelector);
+      var gallery = this.el.querySelector(this.gallerySelector);
 
       if (index >= 0 && index < images.length) {
         currentImage = images[index].querySelector('img');
-        gallery.querySelector('img').src = currentImage.src;
-        gallery.querySelector('img').alt = currentImage.alt;
+        gallery.querySelector(this.displaySelector).src = currentImage.src;
+        gallery.querySelector(this.displaySelector).alt = currentImage.alt;
         gallery.querySelector('.caption').innerHTML = currentImage.alt;
       }
     }
   }]);
 
-  return GalleryView;
-}(View);
+  return Gallery;
+}(AppBase);
 
-},{"../View.js":2}]},{},[3]);
+},{"./Base.js":1}],3:[function(require,module,exports){
+'use strict';
+
+(function () {
+
+  var GalleryView = require('./Gallery.js');
+  var galleryView = new GalleryView(document.querySelector('.container'));
+})();
+
+},{"./Gallery.js":2}]},{},[3]);

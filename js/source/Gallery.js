@@ -1,15 +1,16 @@
-var View = require('../View.js');
+var AppBase = require('./Base.js');
 
-module.exports = class GalleryView extends View {
+module.exports = class Gallery extends AppBase {
 
-  constructor(model) {
-    super(model);
+  constructor(el) {
+    super(el);
 
     // defaults
     this.imageSelector = '.gallery-open';
     this.gallerySelector = '.gallery-container';
     this.contentSelector = 'main';
-    this.imageCollection = document.querySelectorAll('.image-div');
+    this.displaySelector = '.modal-image';
+    this.imageCollection = this.el.querySelectorAll('.image-div');
     this.currentIndex = 0;
 
     this.listenTo("click", this.imageSelector, this.openGallery);
@@ -22,12 +23,10 @@ module.exports = class GalleryView extends View {
 
   openGallery(e) {
     e.preventDefault();
+    var container = this.el.querySelector(this.gallerySelector);
+    var content = this.el.querySelector(this.contentSelector);
 
-    this.currentIndex = e.target.parentElement.getAttribute('data-order');
-    
-    var container = document.querySelector(this.gallerySelector);
-    var content = document.querySelector(this.contentSelector);
-    
+    this.currentIndex = e.target.parentElement.getAttribute('data-order'); 
     this.displayImageInGallery(this.currentIndex);
 
     content.classList.add('hide');
@@ -39,11 +38,11 @@ module.exports = class GalleryView extends View {
       e.preventDefault();
     }
 
-    var content = document.querySelector(this.contentSelector);
-    var container = document.querySelector(this.gallerySelector);
-    var image = document.querySelector(this.gallerySelector + ' img');
+    var content = this.el.querySelector(this.contentSelector);
+    var container = this.el.querySelector(this.gallerySelector);
+    var image = this.el.querySelector('.gallery-img');
 
-    container.querySelector('img').src = "";
+    container.querySelector(this.displaySelector).src = "";
     container.querySelector('.caption').innerHTML = "";
     
     container.classList.remove('open');
@@ -72,7 +71,7 @@ module.exports = class GalleryView extends View {
 
   handleKeyUp(e) {
     // in-gallery actions
-    if ( document.querySelector('.gallery-container').classList.contains("open") ) {
+    if ( this.el.querySelector('.gallery-container').classList.contains("open") ) {
       switch (e.key) {
         case "Escape":
           this.closeGallery();
@@ -92,12 +91,12 @@ module.exports = class GalleryView extends View {
   displayImageInGallery(index) {
     var images = this.imageCollection;
     var currentImage;
-    var gallery = document.querySelector(this.gallerySelector);
+    var gallery = this.el.querySelector(this.gallerySelector);
 
     if ( index >= 0 && index < images.length ) {
       currentImage = images[index].querySelector('img');
-      gallery.querySelector('img').src = currentImage.src;
-      gallery.querySelector('img').alt = currentImage.alt;
+      gallery.querySelector(this.displaySelector).src = currentImage.src;
+      gallery.querySelector(this.displaySelector).alt = currentImage.alt;
       gallery.querySelector('.caption').innerHTML = currentImage.alt;
     }
   }
