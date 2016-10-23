@@ -13,6 +13,8 @@ module.exports = class Gallery extends AppBase {
     this.imageCollection = this.el.querySelectorAll('.image-div');
     this.currentIndex = 0;
 
+    this.galleryImageSize = window.innerWidth > 640 ? 'large' : 'med';
+
     this.listenTo("click", this.imageSelector, this.openGallery);
     this.listenTo("click", ".close", this.closeGallery);
     this.listenTo("click", ".next", this.nextImage);
@@ -98,7 +100,7 @@ module.exports = class Gallery extends AppBase {
 
     
     currentImage = images[index].querySelector('img');
-    gallery.querySelector(this.displaySelector).src = currentImage.src;
+    gallery.querySelector(this.displaySelector).src = currentImage.getAttribute('data-src-' + this.galleryImageSize);
     gallery.querySelector(this.displaySelector).alt = currentImage.alt;
     gallery.querySelector('.caption').innerHTML = currentImage.alt;
   }

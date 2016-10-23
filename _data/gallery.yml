@@ -1,53 +1,99 @@
 - title: couple on ferry
-  src: images/29851275561_517f75b99f_z.jpg
+  src-large: images/gallery/29851275561_517f75b99f_b.jpg
+  src-med: images/gallery/29851275561_517f75b99f_z.jpg
+  src-small: images/gallery/29851275561_517f75b99f_n.jpg
 
 - title: ferries on puget sound
-  src: images/29851283011_36636250aa_z.jpg
+  src-large: images/gallery/29851283011_36636250aa_b.jpg
+  src-med: images/gallery/29851283011_36636250aa_z.jpg
+  src-small: images/gallery/29851283011_36636250aa_n.jpg
 
 - title: motorboat on lake washington
-  src: images/29574730355_2d08692d4d_z.jpg
+  src-large: images/gallery/29574730355_2d08692d4d_b.jpg
+  src-med: images/gallery/29574730355_2d08692d4d_z.jpg
+  src-small: images/gallery/29574730355_2d08692d4d_n.jpg
 
 - title: cemetery, sebastopol ca
-  src: images/24088908166_081100d9bb_z.jpg
+  src-large: images/gallery/24088908166_081100d9bb_b.jpg
+  src-med: images/gallery/24088908166_081100d9bb_z.jpg
+  src-small: images/gallery/24088908166_081100d9bb_n.jpg
 
 - title: st edward seminary, kenmore
-  src: images/30018563441_e0b1461e73_z.jpg
+  src-large: images/gallery/30018563441_e0b1461e73_b.jpg
+  src-med: images/gallery/30018563441_e0b1461e73_z.jpg
+  src-small: images/gallery/30018563441_e0b1461e73_n.jpg
 
 - title: gargoyle at university of washington
-  src: images/29779615785_81b7293ff9_z.jpg
+  src-large: images/gallery/29779615785_81b7293ff9_b.jpg
+  src-med: images/gallery/29779615785_81b7293ff9_z.jpg
+  src-small: images/gallery/29779615785_81b7293ff9_n.jpg
+
+- title: windows, south lake union
+  src-large: images/gallery/30252169375_b9dd4b821c_b.jpg
+  src-med: images/gallery/30252169375_b9dd4b821c_z.jpg
+  src-small: images/gallery/30252169375_b9dd4b821c_n.jpg
 
 - title: canadian goose walking
-  src: images/29667024722_b063e65793_z.jpg
+  src-large: images/gallery/29667024722_b063e65793_b.jpg
+  src-med: images/gallery/29667024722_b063e65793_z.jpg
+  src-small: images/gallery/29667024722_b063e65793_n.jpg
 
 - title: happy face
-  src: images/29464699752_d96c48a241_z.jpg
+  src-large: images/gallery/29464699752_d96c48a241_b.jpg
+  src-med: images/gallery/29464699752_d96c48a241_z.jpg
+  src-small: images/gallery/29464699752_d96c48a241_n.jpg
+
+- title: bainbridge ferry
+  src-large: images/gallery/29308018143_5370107c32_b.jpg
+  src-med: images/gallery/29308018143_5370107c32_z.jpg
+  src-small: images/gallery/29308018143_5370107c32_n.jpg
 
 - title: traffic cones
-  src: images/29464920342_e6c5c71bec_z.jpg
+  src-large: images/gallery/29464920342_e6c5c71bec_b.jpg
+  src-med: images/gallery/29464920342_e6c5c71bec_z.jpg
+  src-small: images/gallery/29464920342_e6c5c71bec_n.jpg
 
 - title: lucas
-  src: images/29489464400_d596225f85_z.jpg
+  src-large: images/gallery/29489464400_d596225f85_b.jpg
+  src-med: images/gallery/29489464400_d596225f85_z.jpg
+  src-small: images/gallery/29489464400_d596225f85_n.jpg
 
 - title: audrey
-  src: images/28419667162_97a95514f4_z.jpg
+  src-large: images/gallery/28419667162_97a95514f4_b.jpg
+  src-med: images/gallery/28419667162_97a95514f4_z.jpg
+  src-small: images/gallery/28419667162_97a95514f4_n.jpg
 
 - title: dandelion
-  src: images/28866943763_bd2f2b1a26_z.jpg
+  src-large: images/gallery/28866943763_bd2f2b1a26_b.jpg
+  src-med: images/gallery/28866943763_bd2f2b1a26_z.jpg
+  src-small: images/gallery/28866943763_bd2f2b1a26_n.jpg
 
 - title: windows at st edward seminary, kenmore
-  src: images/29409173731_578ee6d6e9_z.jpg
+  src-large: images/gallery/29409173731_578ee6d6e9_b.jpg
+  src-med: images/gallery/29409173731_578ee6d6e9_z.jpg
+  src-small: images/gallery/29409173731_578ee6d6e9_n.jpg
 
 - title: pigeons in san diego
-  src: images/24903420926_df05e8eda2_z.jpg
+  src-large: images/gallery/24903420926_df05e8eda2_b.jpg
+  src-med: images/gallery/24903420926_df05e8eda2_z.jpg
+  src-small: images/gallery/24903420926_df05e8eda2_n.jpg
 
 - title: stairs at university of washington
-  src: images/25114355304_2fa74e9866_z.jpg
+  src-large: images/gallery/25114355304_2fa74e9866_b.jpg
+  src-med: images/gallery/25114355304_2fa74e9866_z.jpg
+  src-small: images/gallery/25114355304_2fa74e9866_n.jpg
 
 - title: dandelions, skagit valley
-  src: images/25617580334_6540ae510b_z.jpg
+  src-large: images/gallery/25617580334_6540ae510b_b.jpg
+  src-med: images/gallery/25617580334_6540ae510b_z.jpg
+  src-small: images/gallery/25617580334_6540ae510b_n.jpg
 
 - title: pay phones at seattle central library
-  src: images/22338769443_314602c0c9_z.jpg
+  src-large: images/gallery/22338769443_314602c0c9_b.jpg
+  src-med: images/gallery/22338769443_314602c0c9_z.jpg
+  src-small: images/gallery/22338769443_314602c0c9_n.jpg
 
 - title: warehouse, sebastopol ca
-  src: images/23932565696_344e84740b_z.jpg
+  src-large: images/gallery/23932565696_344e84740b_b.jpg
+  src-med: images/gallery/23932565696_344e84740b_z.jpg
+  src-small: images/gallery/23932565696_344e84740b_n.jpg

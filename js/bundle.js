@@ -23,6 +23,29 @@ module.exports = function () {
         elem.addEventListener(eventType, listener.bind(_this));
       });
     }
+  }, {
+    key: "debounce",
+    value: function debounce(func, wait, immediate) {
+      var timeout;
+
+      return function () {
+        var context = this,
+            args = arguments;
+        var later = function later() {
+          timeout = null;
+          if (!immediate) func.apply(context, args);
+        };
+
+        var callNow = immediate && !timeout;
+
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+
+        if (callNow) {
+          func.apply(context, args);
+        }
+      };
+    }
   }]);
 
   return View;
@@ -56,6 +79,8 @@ module.exports = function (_AppBase) {
     _this.displaySelector = '.modal-image';
     _this.imageCollection = _this.el.querySelectorAll('.image-div');
     _this.currentIndex = 0;
+
+    _this.galleryImageSize = window.innerWidth > 640 ? 'large' : 'med';
 
     _this.listenTo("click", _this.imageSelector, _this.openGallery);
     _this.listenTo("click", ".close", _this.closeGallery);
@@ -152,7 +177,7 @@ module.exports = function (_AppBase) {
       var gallery = this.el.querySelector(this.gallerySelector);
 
       currentImage = images[index].querySelector('img');
-      gallery.querySelector(this.displaySelector).src = currentImage.src;
+      gallery.querySelector(this.displaySelector).src = currentImage.getAttribute('data-src-' + this.galleryImageSize);
       gallery.querySelector(this.displaySelector).alt = currentImage.alt;
       gallery.querySelector('.caption').innerHTML = currentImage.alt;
     }
@@ -164,10 +189,87 @@ module.exports = function (_AppBase) {
 },{"./Base.js":1}],3:[function(require,module,exports){
 'use strict';
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var AppBase = require('./Base.js');
+
+module.exports = function (_AppBase) {
+  _inherits(LazyLoad, _AppBase);
+
+  function LazyLoad(el) {
+    _classCallCheck(this, LazyLoad);
+
+    var _this = _possibleConstructorReturn(this, (LazyLoad.__proto__ || Object.getPrototypeOf(LazyLoad)).call(this, el));
+
+    _this.images = Array.prototype.slice.call(_this.el.querySelectorAll('.lazy-load'));
+    _this.scrollListener = _this.debounce(_this.loadImages, 50).bind(_this);
+    _this.imageSize = _this.getImageSize();
+
+    window.addEventListener("DOMContentLoaded", _this.loadImages.bind(_this));
+    window.addEventListener("scroll", _this.scrollListener);
+    return _this;
+  }
+
+  _createClass(LazyLoad, [{
+    key: 'getImageSize',
+    value: function getImageSize() {
+      var screenWidth = window.innerWidth;
+      if (window.innerWidth > 600) {
+        return 'med';
+      }
+      return 'small';
+    }
+  }, {
+    key: 'isVisible',
+    value: function isVisible(element) {
+      var bounds = element.getBoundingClientRect();
+      return bounds.top > 0 && bounds.top < window.innerHeight;
+    }
+  }, {
+    key: 'loadImage',
+    value: function loadImage(imageEl) {
+      imageEl.src = imageEl.getAttribute('data-src-' + this.imageSize);
+      imageEl.classList.remove('lazy-load');
+    }
+  }, {
+    key: 'loadImages',
+    value: function loadImages() {
+      var _this2 = this;
+
+      if (this.images.length === 0) {
+        window.removeEventListener("scroll", this.scrollListener);
+        return;
+      }
+
+      this.images = this.images.filter(function (img) {
+        if (_this2.isVisible(img)) {
+          _this2.loadImage(img);
+          return false;
+        }
+        return true;
+      });
+    }
+  }]);
+
+  return LazyLoad;
+}(AppBase);
+
+},{"./Base.js":1}],4:[function(require,module,exports){
+'use strict';
+
 (function () {
 
+  var LazyLoadView = require('./LazyLoad.js');
   var GalleryView = require('./Gallery.js');
+
+  var lazyLoadView = new LazyLoadView(document.querySelector('.container'));
   var galleryView = new GalleryView(document.querySelector('.container'));
 })();
 
-},{"./Gallery.js":2}]},{},[3]);
+},{"./Gallery.js":2,"./LazyLoad.js":3}]},{},[4]);
