@@ -1,6 +1,6 @@
-var AppBase = require('./Base.js');
+import AppBase from './Base.js'
 
-module.exports = class LazyLoad extends AppBase {
+export default class LazyLoad extends AppBase {
 
   constructor(el) {
     super(el);

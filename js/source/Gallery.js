@@ -1,6 +1,6 @@
-var AppBase = require('./Base.js');
+import AppBase from './Base.js'
 
-module.exports = class Gallery extends AppBase {
+export default class Gallery extends AppBase {
 
   constructor(el) {
     super(el);

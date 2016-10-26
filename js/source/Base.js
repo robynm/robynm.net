@@ -1,4 +1,4 @@
-module.exports = class View {
+export default class View {
 
   constructor(el) {
     this.el = el;

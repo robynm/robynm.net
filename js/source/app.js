@@ -1,7 +1,7 @@
-(function() {
+import LazyLoadView from './LazyLoad.js'
+import GalleryView from './Gallery.js'
 
-  var LazyLoadView = require('./LazyLoad.js');
-  var GalleryView = require('./Gallery.js');
+(function() {
 
   var lazyLoadView = new LazyLoadView(document.querySelector('.container'));
   var galleryView = new GalleryView(document.querySelector('.container'));
