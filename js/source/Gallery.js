@@ -95,13 +95,20 @@ export default class Gallery extends AppBase {
 
   displayImageInGallery(index) {
     var images = this.imageCollection;
-    var currentImage;
+    var currentImage, galleryImage;
     var gallery = this.el.querySelector(this.gallerySelector);
 
     
     currentImage = images[index].querySelector('img');
-    gallery.querySelector(this.displaySelector).src = currentImage.getAttribute('data-src-' + this.galleryImageSize);
-    gallery.querySelector(this.displaySelector).alt = currentImage.alt;
+    galleryImage = gallery.querySelector(this.displaySelector);
+
+    galleryImage.classList.add('loading');
+    galleryImage.addEventListener( 'load', function() {
+      galleryImage.classList.remove('loading');
+    });
+
+    galleryImage.src = currentImage.getAttribute('data-src-' + this.galleryImageSize);
+    galleryImage.alt = currentImage.alt;
     gallery.querySelector('.caption').innerHTML = currentImage.alt;
   }
 

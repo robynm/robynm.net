@@ -250,7 +250,7 @@
 .pb5, .pv5 {
   padding-bottom: 4rem; }
 
-.tra, .image-div img {
+.tra, .image-div img, .gallery-container .modal-image {
   transition: 1s all ease; }
 
 @keyframes fadein {
@@ -414,6 +414,9 @@ figcaption {
 
 .lazy-load {
   opacity: .1; }
+
+.loading {
+  opacity: 0; }
 
 body {
   -webkit-font-smoothing: antialiased;
