@@ -23,7 +23,9 @@ export default class LazyLoad extends AppBase {
 
   isVisible(element) {
     var bounds = element.getBoundingClientRect();
-    return bounds.top > 0 && bounds.top < window.innerHeight;
+
+    return (bounds.top > 0 && bounds.top < window.innerHeight) || 
+           (bounds.bottom > 0 && bounds.bottom < window.innerHeight);
   }
 
   loadImage(imageEl) {

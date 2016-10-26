@@ -253,7 +253,8 @@ var LazyLoad = function (_AppBase) {
     key: 'isVisible',
     value: function isVisible(element) {
       var bounds = element.getBoundingClientRect();
-      return bounds.top > 0 && bounds.top < window.innerHeight;
+
+      return bounds.top > 0 && bounds.top < window.innerHeight || bounds.bottom > 0 && bounds.bottom < window.innerHeight;
     }
   }, {
     key: 'loadImage',
