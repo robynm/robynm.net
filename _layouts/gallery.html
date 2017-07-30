@@ -1,9 +1,9 @@
 <html lang="en-US">
 {% include head.html %}
-<body class="pa4 sans f6 lh2">
+<body class="pa4">
   <div class="container">
     {% include header.html %}
-    <main>  
+    <main class="gallery-main">  
       <div class="content df flw">
         {% for img in site.data.gallery %}
           <div class="image-div" data-order="{{forloop.index0}}">

@@ -14,6 +14,12 @@
   border-style: solid;
   border-width: 1px; }
 
+.bb {
+  border-bottom: solid 1px; }
+
+.bt {
+  border-top: solid 1px; }
+
 .br0 {
   border-radius: 0; }
 
@@ -268,11 +274,14 @@
 .b {
   font-weight: bold; }
 
+.upper {
+  text-transform: uppercase; }
+
 .sans {
-  font-family: "Lucida Grande", Helvetica, Arial, sans-serif; }
+  font-family: "Lucida Grande", Geneva, Verdana, sans-serif; }
 
 .serif {
-  font-family: Georgia, Times, "Times New Roman", serif; }
+  font-family: "Lucida Bright", Georgia, serif; }
 
 .hide {
   display: none; }
@@ -307,6 +316,14 @@
 .lh3 {
   line-height: 2em; }
 
+main {
+  margin: 40px 0; }
+
+.gallery-main {
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto; }
+
 .flex-container {
   flex-direction: column; }
   @media (min-width: 600px) {
@@ -330,6 +347,7 @@
 .block-link, .block-link-mobile-visible {
   position: absolute;
   text-decoration: none;
+  padding: 0;
   top: 0;
   left: 0;
   bottom: 0;
@@ -421,18 +439,64 @@ figcaption {
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-size: 16px; }
+  color: #231f20;
+  font-size: 18px;
+  line-height: 1.6;
+  font-family: "Lucida Bright", Georgia, serif; }
 
-.container {
-  max-width: 1000px;
+h1, h2, h3, h4 {
+  line-height: 1.2;
+  font-weight: normal; }
+
+a {
+  color: #0366d6;
+  text-decoration: none;
+  padding: 3px; }
+  a:hover, a:active, a:focus {
+    color: #093145; }
+
+main {
+  max-width: 860px;
   margin-left: auto;
   margin-right: auto; }
 
-a {
-  color: #00B7FF; }
-
-a:hover {
-  color: #0066A1; }
-
 li {
   list-style: none; }
+
+header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 0 10px;
+  max-width: 860px;
+  margin-left: auto;
+  margin-right: auto; }
+  header .title {
+    font-size: 24px; }
+
+footer {
+  max-width: 860px;
+  margin-left: auto;
+  margin-right: auto; }
+
+.card {
+  display: flex;
+  padding: 25px;
+  justify-content: space-around;
+  background: #EEEEEE;
+  flex-wrap: wrap;
+  margin-bottom: 40px; }
+  .card a:hover, .card a:active, .card a:focus {
+    opacity: .8; }
+  @media (max-width: 600px) {
+    .card a {
+      margin: 15px;
+      align-self: center; } }
+  @media (min-width: 600px) {
+    .card {
+      flex-direction: row; } }
+
+@media (min-width: 600px) {
+  .card-text {
+    width: 50%; } }

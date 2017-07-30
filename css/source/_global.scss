@@ -1,23 +1,85 @@
 body {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: $color-off-black;
+    font-size: 18px;
+    line-height: 1.6;
+    font-family: $font-serif;
 }
 
-.container {
-  max-width: 1000px;
+h1,h2,h3,h4 {
+    line-height: 1.2;
+    font-weight: normal;
+}
+
+a {
+    color: $color-blue;
+    text-decoration: none;
+    padding: 3px;
+
+    &:hover, &:active, &:focus {
+        color: $color-dark-blue;
+    }
+}
+
+main {
+  max-width: 860px;
   margin-left: auto;
   margin-right: auto;
 }
 
-a { 
-  color: $color-blue; 
-}
-
-a:hover { 
-  color: $color-dark-blue; 
-}
-
 li { 
   list-style: none; 
+}
+
+header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0 10px;
+
+    .title {
+        font-size: 24px;
+    }
+
+    max-width: 860px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+footer {
+    max-width: 860px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.card {
+    display: flex;
+    padding: 25px;
+    justify-content: space-around;
+    background: $color-light-gray;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+
+    a:hover, a:active, a:focus {
+        opacity: .8;
+    }
+
+    a {
+         @media (max-width: $break-mobile) {
+            margin: 15px;
+            align-self: center;
+        }
+    }
+
+    @media (min-width: $break-mobile) {
+        flex-direction: row;
+    }
+}
+
+.card-text {
+    @media (min-width: $break-mobile) {
+        width: 50%;    
+    }
 }
