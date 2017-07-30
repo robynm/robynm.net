@@ -8,7 +8,7 @@
         {% for img in site.data.gallery %}
           <div class="image-div" data-order="{{forloop.index0}}">
             <img class="lazy-load" src="images/placeholder.png" alt="{{img.title}}" data-src-large="{{img.src-large}}" data-src-med="{{img.src-med}}" data-src-small="{{img.src-small}}" width="300" height="200">
-            <a class="block-link flex-end gallery-open" href="#"><span class="pa2 serif">{{img.title}}</span></a>
+            <a class="block-link flex-end gallery-open" href="#"><span class="pa2 caption">{{img.title}}</span></a>
           </div>
           {% assign i = forloop.index | modulo:5 %}
           {% if i == 0 %}
@@ -21,7 +21,7 @@
     <div class="gallery-container">
       <figure class="image-container ma0">
         <img src="" class="modal-image">
-        <figcaption class="caption serif pa3"></figcaption>
+        <figcaption class="caption pa3"></figcaption>
       </figure>
       <a href="#" class="close nav pa3" title="close"><img src="/css/icons-svg/cancel.svg" height="20" width="20"></a> 
       <a href="#" class="prev nav pv2 ph3" title="previous"><img src="/css/icons-svg/arrow-left.svg" height="30" width="30"></a>

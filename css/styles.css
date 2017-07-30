@@ -67,15 +67,6 @@
 .center {
   text-align: center; }
 
-.mw1 {
-  max-width: 12rem; }
-
-.mw2 {
-  max-width: 25rem; }
-
-.mw3 {
-  max-width: 50rem; }
-
 .ma0 {
   margin: 0; }
 
@@ -256,6 +247,10 @@
 .pb5, .pv5 {
   padding-bottom: 4rem; }
 
+@media (min-width: 600px) {
+  .ma40-lg {
+    margin: 40px; } }
+
 .tra, .image-div img, .gallery-container .modal-image {
   transition: 1s all ease; }
 
@@ -320,9 +315,7 @@ main {
   margin: 40px 0; }
 
 .gallery-main {
-  max-width: 1000px;
-  margin-left: auto;
-  margin-right: auto; }
+  max-width: 1000px; }
 
 .flex-container {
   flex-direction: column; }
@@ -406,7 +399,7 @@ main {
     position: absolute;
     top: 0;
     right: 0;
-    border-radius: 3px; }
+    border-radius: 0 0 0 3px; }
   .gallery-container .prev {
     position: absolute;
     left: 0;
@@ -424,17 +417,42 @@ main {
   .gallery-container .nav:hover, .gallery-container .nav:focus {
     background-color: rgba(255, 255, 255, 0.8); }
 
+.caption {
+  font-size: 16px; }
+
 figcaption {
   position: absolute;
   bottom: 0;
   left: 0;
-  background-color: rgba(255, 255, 255, 0.7); }
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 0 3px 0 0; }
 
 .lazy-load {
   opacity: .1; }
 
 .loading {
   opacity: 0; }
+
+.card {
+  display: flex;
+  padding: 25px;
+  justify-content: space-around;
+  background: #EEEEEE;
+  flex-wrap: wrap;
+  margin-bottom: 40px; }
+  .card a:hover, .card a:active, .card a:focus {
+    opacity: .8; }
+  @media (max-width: 600px) {
+    .card a {
+      margin: 15px;
+      align-self: center; } }
+  @media (min-width: 600px) {
+    .card {
+      flex-direction: row; } }
+
+@media (min-width: 600px) {
+  .card-text {
+    width: 50%; } }
 
 body {
   -webkit-font-smoothing: antialiased;
@@ -463,6 +481,10 @@ main {
 li {
   list-style: none; }
 
+img {
+  max-width: 100%;
+  height: auto; }
+
 header {
   display: flex;
   flex-wrap: wrap;
@@ -479,24 +501,3 @@ footer {
   max-width: 860px;
   margin-left: auto;
   margin-right: auto; }
-
-.card {
-  display: flex;
-  padding: 25px;
-  justify-content: space-around;
-  background: #EEEEEE;
-  flex-wrap: wrap;
-  margin-bottom: 40px; }
-  .card a:hover, .card a:active, .card a:focus {
-    opacity: .8; }
-  @media (max-width: 600px) {
-    .card a {
-      margin: 15px;
-      align-self: center; } }
-  @media (min-width: 600px) {
-    .card {
-      flex-direction: row; } }
-
-@media (min-width: 600px) {
-  .card-text {
-    width: 50%; } }

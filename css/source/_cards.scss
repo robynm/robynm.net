@@ -1,0 +1,29 @@
+.card {
+    display: flex;
+    padding: 25px;
+    justify-content: space-around;
+    background: $color-light-gray;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+
+    a:hover, a:active, a:focus {
+        opacity: .8;
+    }
+
+    a {
+         @media (max-width: $break-mobile) {
+            margin: 15px;
+            align-self: center;
+        }
+    }
+
+    @media (min-width: $break-mobile) {
+        flex-direction: row;
+    }
+}
+
+.card-text {
+    @media (min-width: $break-mobile) {
+        width: 50%;    
+    }
+}
