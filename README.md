@@ -1,5 +1,5 @@
-# robynm.github.io
-http://www.robynm.net
+# robynm.net
+https://www.robynm.net
 
 A static site built with Jekyll, hosted on github pages. 
 
