@@ -1,13 +1,19 @@
-<header class="sans bb b--light-gray">
-    <div class="upper">
-        <div class="title dib">Robyn Meshulam</div>{% if page.title %}<span class="title"> | </span><span>{{page.title}}</span> {% endif %}
+<header class="bg--dark-gray white pa4">
+  <div class="head-container">
+    <div class="upper title">
+      <div class="dib f3 b">Robyn Meshulam</div>
+      {% if page.title %}
+      <span class="f3"> | </span><span class="f4">{{page.title}}</span>
+      {% endif %}
+      <span class="dib mr2"></span>
     </div>  
   
-  <nav>
-    <ul class="pa0 mv3">
-      <li class="dib mr2"><a href="/">about</a></li>
-      <li class="dib mr2"><a href="projects">projects</a></li>
-      <li class="dib mr2"><a href="photos">photos</a></li>
-    </ul>
-  </nav>
+    <nav>
+      <ul class="pa0 mv3">
+        <li class="dib mt3 mr1"><a class="bg--bright-blue white pv2 ph3" href="/">About</a></li>
+        <li class="dib mt3 mr1"><a class="bg--bright-blue white pv2 ph3" href="projects">Projects</a></li>
+        <li class="dib mt3 mr1"><a class="bg--bright-blue white pv2 ph3" href="photos">Photos</a></li>
+      </ul>
+    </nav>
+  </div>
 </header>

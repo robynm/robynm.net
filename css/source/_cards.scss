@@ -1,29 +1,28 @@
-.card {
-    display: flex;
-    padding: 25px;
-    justify-content: space-around;
-    background: $color-light-gray;
-    flex-wrap: wrap;
-    margin-bottom: 40px;
+.card-container {
+    display: grid;
+    grid-gap: 15px;
 
-    a:hover, a:active, a:focus {
-        opacity: .8;
-    }
-
-    a {
-         @media (max-width: $break-mobile) {
-            margin: 15px;
-            align-self: center;
-        }
-    }
-
-    @media (min-width: $break-mobile) {
-        flex-direction: row;
+    @media (min-width: 840px) {
+        grid-template-columns: repeat(2, 400px);
     }
 }
 
+.card-link {
+    border: 1px dotted #ccc;
+    background: white;
+
+    display: flex;
+    padding: 10px 25px;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.card-link:hover, .card-link:active, .card-link:focus {
+    text-decoration: none;
+    border: 1px dotted black;
+}
+
 .card-text {
-    @media (min-width: $break-mobile) {
-        width: 50%;    
-    }
+    margin-top: 10px;
+    color: $color-off-black;
 }

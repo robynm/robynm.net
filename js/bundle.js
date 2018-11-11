@@ -1,4 +1,4 @@
-(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+(function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30,7 +30,7 @@ var View = function () {
   }, {
     key: "debounce",
     value: function debounce(func, wait, immediate) {
-      var timeout;
+      var timeout = void 0;
 
       return function () {
         var context = this,
@@ -110,12 +110,12 @@ var Gallery = function (_AppBase) {
     value: function openGallery(e) {
       e.preventDefault();
       var container = this.el.querySelector(this.gallerySelector);
-      var content = this.el.querySelector(this.contentSelector);
+      var body = document.body;
 
       this.currentIndex = e.target.parentElement.getAttribute('data-order');
       this.displayImageInGallery(this.currentIndex);
 
-      content.classList.add('hide');
+      body.classList.add('no-scroll');
       container.classList.add('open');
     }
   }, {
@@ -125,7 +125,7 @@ var Gallery = function (_AppBase) {
         e.preventDefault();
       }
 
-      var content = this.el.querySelector(this.contentSelector);
+      var body = document.body;
       var container = this.el.querySelector(this.gallerySelector);
       var image = this.el.querySelector('.gallery-img');
 
@@ -133,7 +133,7 @@ var Gallery = function (_AppBase) {
       container.querySelector('.caption').innerHTML = "";
 
       container.classList.remove('open');
-      content.classList.remove('hide');
+      body.classList.remove('no-scroll');
     }
   }, {
     key: 'nextImage',
@@ -187,11 +187,10 @@ var Gallery = function (_AppBase) {
     key: 'displayImageInGallery',
     value: function displayImageInGallery(index) {
       var images = this.imageCollection;
-      var currentImage, galleryImage;
       var gallery = this.el.querySelector(this.gallerySelector);
 
-      currentImage = images[index].querySelector('img');
-      galleryImage = gallery.querySelector(this.displaySelector);
+      var currentImage = images[index].querySelector('img');
+      var galleryImage = gallery.querySelector(this.displaySelector);
 
       galleryImage.classList.add('loading');
       galleryImage.addEventListener('load', function () {

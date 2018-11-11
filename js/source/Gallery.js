@@ -25,13 +25,13 @@ export default class Gallery extends AppBase {
 
   openGallery(e) {
     e.preventDefault();
-    var container = this.el.querySelector(this.gallerySelector);
-    var content = this.el.querySelector(this.contentSelector);
+    const container = this.el.querySelector(this.gallerySelector);
+    const body = document.body;
 
     this.currentIndex = e.target.parentElement.getAttribute('data-order'); 
     this.displayImageInGallery(this.currentIndex);
 
-    content.classList.add('hide');
+    body.classList.add('no-scroll');
     container.classList.add('open');
   }
 
@@ -40,15 +40,15 @@ export default class Gallery extends AppBase {
       e.preventDefault();
     }
 
-    var content = this.el.querySelector(this.contentSelector);
-    var container = this.el.querySelector(this.gallerySelector);
-    var image = this.el.querySelector('.gallery-img');
+    const body = document.body;
+    const container = this.el.querySelector(this.gallerySelector);
+    const image = this.el.querySelector('.gallery-img');
 
     container.querySelector(this.displaySelector).src = "";
     container.querySelector('.caption').innerHTML = "";
     
     container.classList.remove('open');
-    content.classList.remove('hide');
+    body.classList.remove('no-scroll');
   }
 
   nextImage(e) {
@@ -94,13 +94,11 @@ export default class Gallery extends AppBase {
   }
 
   displayImageInGallery(index) {
-    var images = this.imageCollection;
-    var currentImage, galleryImage;
-    var gallery = this.el.querySelector(this.gallerySelector);
-
+    const images = this.imageCollection;
+    const gallery = this.el.querySelector(this.gallerySelector);
     
-    currentImage = images[index].querySelector('img');
-    galleryImage = gallery.querySelector(this.displaySelector);
+    const currentImage = images[index].querySelector('img');
+    const galleryImage = gallery.querySelector(this.displaySelector);
 
     galleryImage.classList.add('loading');
     galleryImage.addEventListener( 'load', function() {

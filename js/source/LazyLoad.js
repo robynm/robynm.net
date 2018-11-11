@@ -14,7 +14,7 @@ export default class LazyLoad extends AppBase {
   }
 
   getImageSize() {
-    var screenWidth = window.innerWidth;
+    const screenWidth = window.innerWidth;
     if ( window.innerWidth > 600 ) {
       return 'med';
     }
@@ -22,7 +22,7 @@ export default class LazyLoad extends AppBase {
   }
 
   isVisible(element) {
-    var bounds = element.getBoundingClientRect();
+    const bounds = element.getBoundingClientRect();
 
     return (bounds.top > 0 && bounds.top < window.innerHeight) || 
            (bounds.bottom > 0 && bounds.bottom < window.innerHeight);

@@ -1,6 +1,6 @@
 <html lang="en-US">
 {% include head.html %}
-<body class="pa4">
+<body>
   <div class="container">
     {% include header.html %}
     <main class="gallery-main">  
@@ -22,10 +22,10 @@
       <figure class="image-container ma0">
         <img src="" class="modal-image">
         <figcaption class="caption pa3"></figcaption>
+        <a href="#" class="close nav pa3" title="close"><img src="/css/icons-svg/cancel.svg" height="20" width="20"></a> 
+        <a href="#" class="prev nav pv2 ph3" title="previous"><img src="/css/icons-svg/arrow-left.svg" height="30" width="30"></a>
+        <a href="#" class="next nav pv2 ph3" title="next"><img src="/css/icons-svg/arrow-right.svg" height="30" width="30"></a>
       </figure>
-      <a href="#" class="close nav pa3" title="close"><img src="/css/icons-svg/cancel.svg" height="20" width="20"></a> 
-      <a href="#" class="prev nav pv2 ph3" title="previous"><img src="/css/icons-svg/arrow-left.svg" height="30" width="30"></a>
-      <a href="#" class="next nav pv2 ph3" title="next"><img src="/css/icons-svg/arrow-right.svg" height="30" width="30"></a>
     </div>
     {% include footer.html %}
   </div>
