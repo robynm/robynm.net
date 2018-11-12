@@ -19,8 +19,11 @@ export default class Gallery extends AppBase {
     this.listenTo("click", ".close", this.closeGallery);
     this.listenTo("click", ".next", this.nextImage);
     this.listenTo("click", ".prev", this.prevImage);
+    this.listenTo("click", this.gallerySelector, this.handleGalleryClick);
 
     window.addEventListener("keyup", this.handleKeyUp.bind(this));
+
+
   }
 
   openGallery(e) {
@@ -49,6 +52,7 @@ export default class Gallery extends AppBase {
     
     container.classList.remove('open');
     body.classList.remove('no-scroll');
+    this.resetControlVisibility();
   }
 
   nextImage(e) {
@@ -91,6 +95,28 @@ export default class Gallery extends AppBase {
           break;
       }
     }
+  }
+
+  handleGalleryClick(e) {    
+    // close gallery on background click
+    // ignore if gallery isn't open
+    if ( e.target.classList.contains('gallery-container') && e.target.classList.contains('open') ) {
+      this.closeGallery(e);
+    }
+    // toggle control visibility on image click
+    else if ( e.target.classList.contains('image-container') || e.target.classList.contains('modal-image') ) {
+      this.toggleControlVisibility();
+    }
+  }
+
+  toggleControlVisibility() {
+    const controls = Array.prototype.slice.call(document.querySelectorAll('.nav'));
+    controls.forEach(control => control.classList.toggle('opacity-0'));
+  }
+
+  resetControlVisibility() {
+    const controls = Array.prototype.slice.call(document.querySelectorAll('.nav'));
+    controls.forEach(control => control.classList.remove('opacity-0'));
   }
 
   displayImageInGallery(index) {

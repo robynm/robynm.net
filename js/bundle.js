@@ -100,8 +100,10 @@ var Gallery = function (_AppBase) {
     _this.listenTo("click", ".close", _this.closeGallery);
     _this.listenTo("click", ".next", _this.nextImage);
     _this.listenTo("click", ".prev", _this.prevImage);
+    _this.listenTo("click", _this.gallerySelector, _this.handleGalleryClick);
 
     window.addEventListener("keyup", _this.handleKeyUp.bind(_this));
+
     return _this;
   }
 
@@ -134,6 +136,7 @@ var Gallery = function (_AppBase) {
 
       container.classList.remove('open');
       body.classList.remove('no-scroll');
+      this.resetControlVisibility();
     }
   }, {
     key: 'nextImage',
@@ -182,6 +185,35 @@ var Gallery = function (_AppBase) {
             break;
         }
       }
+    }
+  }, {
+    key: 'handleGalleryClick',
+    value: function handleGalleryClick(e) {
+      // close gallery on background click
+      // ignore if gallery isn't open
+      if (e.target.classList.contains('gallery-container') && e.target.classList.contains('open')) {
+        this.closeGallery(e);
+      }
+      // toggle control visibility on image click
+      else if (e.target.classList.contains('image-container') || e.target.classList.contains('modal-image')) {
+          this.toggleControlVisibility();
+        }
+    }
+  }, {
+    key: 'toggleControlVisibility',
+    value: function toggleControlVisibility() {
+      var controls = Array.prototype.slice.call(document.querySelectorAll('.nav'));
+      controls.forEach(function (control) {
+        return control.classList.toggle('opacity-0');
+      });
+    }
+  }, {
+    key: 'resetControlVisibility',
+    value: function resetControlVisibility() {
+      var controls = Array.prototype.slice.call(document.querySelectorAll('.nav'));
+      controls.forEach(function (control) {
+        return control.classList.remove('opacity-0');
+      });
     }
   }, {
     key: 'displayImageInGallery',

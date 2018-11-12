@@ -123,6 +123,7 @@ main {
     position: absolute;
     top: 0;
     right: 0;
+    background-color: rgba(255,255,255,.7);
   }
 
   .prev {
@@ -130,6 +131,7 @@ main {
     left: 0;
     top: 50%;
     transform: translateY(-50%);
+    background-color: rgba(255,255,255,.7);
   }
 
   .next {
@@ -137,12 +139,14 @@ main {
     right: 0;
     top: 50%;
     transform: translateY(-50%);
+    background-color: rgba(255,255,255,.7);
   }
 
   .nav {
-    background-color: rgba(255,255,255,.7);
+    transition: .2s opacity ease;
   }
-  .nav:hover, .nav:focus {
+
+  .prev:hover, .next:hover, .close:hover .prev:focus, .next:focus, .close:focus {
     background-color: rgba(255,255,255,.8); 
   }
 }
@@ -155,7 +159,7 @@ figcaption {
   position: absolute;
   bottom: 0;
   left: 0;
-  background-color: rgba(255,255,255,.7);
+  background-color: rgba(255,255,255,.8);
   color: black;
 }
 
