@@ -452,7 +452,12 @@ main {
     background-color: rgba(255, 255, 255, 0.7); }
   .gallery-container .nav {
     transition: .2s opacity ease; }
-  .gallery-container .prev:hover, .gallery-container .next:hover, .gallery-container .close:hover .prev:focus, .gallery-container .next:focus, .gallery-container .close:focus {
+  .gallery-container .prev:hover,
+  .gallery-container .next:hover,
+  .gallery-container .close:hover,
+  .gallery-container .prev:focus,
+  .gallery-container .next:focus,
+  .gallery-container .close:focus {
     background-color: rgba(255, 255, 255, 0.8); }
 
 .caption {
