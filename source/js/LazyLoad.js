@@ -1,4 +1,6 @@
-import AppBase from './Base.js'
+import AppBase from './Base.js';
+
+const BREAK_SMALL = 600;
 
 export default class LazyLoad extends AppBase {
 
@@ -15,7 +17,7 @@ export default class LazyLoad extends AppBase {
 
   getImageSize() {
     const screenWidth = window.innerWidth;
-    if ( window.innerWidth > 600 ) {
+    if ( window.innerWidth > BREAK_SMALL ) {
       return 'med';
     }
     return 'small';

@@ -1,4 +1,6 @@
-import AppBase from './Base.js'
+import AppBase from './Base.js';
+
+const BREAK_MED = 640;
 
 export default class Gallery extends AppBase {
 
@@ -13,7 +15,7 @@ export default class Gallery extends AppBase {
     this.imageCollection = this.el.querySelectorAll('.image-div');
     this.currentIndex = 0;
 
-    this.galleryImageSize = window.innerWidth > 640 ? 'large' : 'med';
+    this.galleryImageSize = window.innerWidth > BREAK_MED ? 'large' : 'med';
 
     this.listenTo("click", this.imageSelector, this.openGallery);
     this.listenTo("click", ".close", this.closeGallery);

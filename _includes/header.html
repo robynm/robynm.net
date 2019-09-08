@@ -10,8 +10,15 @@
   
     <nav>
       <ul class="pa0 mv3">
+        {% if page.title %}
+        <li class="dib mt3 mr1"><a class="bg--bright-blue white normal pv2 ph3" href="/">About</a></li>
+        {% endif %}
+        {% if page.title != "projects" %}
         <li class="dib mt3 mr1"><a class="bg--bright-blue white normal pv2 ph3" href="projects">Projects</a></li>
+        {% endif %}
+        {% if page.title != "photos" %}
         <li class="dib mt3 mr1"><a class="bg--bright-blue white normal pv2 ph3" href="photos">Photos</a></li>
+        {% endif %}
       </ul>
     </nav>
   </div>

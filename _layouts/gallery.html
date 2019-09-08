@@ -8,7 +8,7 @@
       <div class="content df flw">
         {% for img in site.data.gallery %}
           <div class="image-div" data-order="{{forloop.index0}}">
-            <img class="lazy-load" src="images/placeholder.png" alt="{{img.title}}" data-src-large="{{img.src-large}}" data-src-med="{{img.src-med}}" data-src-small="{{img.src-small}}" width="300" height="200">
+            <img class="lazy-load" src="dist/images/placeholder.png" alt="{{img.title}}" data-src-large="{{img.src-large}}" data-src-med="{{img.src-med}}" data-src-small="{{img.src-small}}" width="300" height="200">
             <a class="block-link flex-end gallery-open" href="#"><span class="pa2 caption normal">{{img.title}}</span></a>
           </div>
           {% assign i = forloop.index | modulo:5 %}
@@ -23,13 +23,13 @@
       <figure class="image-container ma0">
         <img src="" class="modal-image">
         <figcaption class="caption nav pa3"></figcaption>
-        <a href="#" class="close nav pa3" title="close"><img src="/css/icons-svg/cancel.svg" height="20" width="20" alt="close"></a> 
-        <a href="#" class="prev nav pv2 ph3" title="previous"><img src="/css/icons-svg/arrow-left.svg" height="30" width="30" alt="previous"></a>
-        <a href="#" class="next nav pv2 ph3" title="next"><img src="/css/icons-svg/arrow-right.svg" height="30" width="30" alt="next"></a>
+        <a href="#" class="close nav pa3" title="close"><img src="/dist/icons-svg/cancel.svg" height="20" width="20" alt="close"></a> 
+        <a href="#" class="prev nav pv2 ph3" title="previous"><img src="/dist/icons-svg/arrow-left.svg" height="30" width="30" alt="previous"></a>
+        <a href="#" class="next nav pv2 ph3" title="next"><img src="/dist/icons-svg/arrow-right.svg" height="30" width="30" alt="next"></a>
       </figure>
     </section>
     {% include footer.html %}
   </div>
-  <script type="text/javascript" src="js/bundle.min.js"></script>
+  <script type="text/javascript" src="dist/bundle.js"></script>
 </body>
 </html>
